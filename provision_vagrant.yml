@@ -1,0 +1,35 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+      - name: link /home/vagrant/kassomat -> /vagrant
+        file: src=/vagrant
+              dest=/home/vagrant/kassomat
+              state=link
+
+# update / install packages
+      - apt: update_cache=yes
+     
+# the message broker used by all kassomat components 
+      - apt: pkg=redis-server
+      - apt: pkg=redis-tools
+
+# these packages are needed to compile Payout
+      - apt: pkg=build-essential
+      - apt: pkg=libhiredis-dev
+      - apt: pkg=libevent-dev
+      - apt: pkg=libjansson-dev
+      - apt: pkg=uuid-dev
+
+# those are needed to build the Changeomatic and the PayoutSimulator
+      - apt: pkg=openjdk-8-jdk
+      - apt: pkg=maven
+
+# and these are needed for the kassomat maintenance application
+      - apt: pkg=python-dev
+      - apt: pkg=python-pip
+      - pip: requirements=/vagrant/requirements.txt
+
+# set the default directory to /home/vagrant/kassomat
+      - lineinfile: dest=/home/vagrant/.bashrc
+                    line='cd /home/vagrant/kassomat'
