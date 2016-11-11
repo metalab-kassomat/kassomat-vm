@@ -9,6 +9,8 @@
 
 # update / install packages
       - apt: update_cache=yes
+      - apt: pkg=usbutils
+      - apt: pkg=virtualbox-guest-dkms
      
 # the message broker used by all kassomat components 
       - apt: pkg=redis-server
