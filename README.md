@@ -8,4 +8,4 @@ Kassomat meta repository with Vagrantfiles and stuff
 4. `vagrant up`
 5. `vagrant ssh-config`
 6. `vagrant ssh`
-
+7. `./build_all.sh`
