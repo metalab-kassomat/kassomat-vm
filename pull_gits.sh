@@ -2,10 +2,10 @@
 
 cd gits
 
-(cd Payout; git pull)
+(cd kassomat-payout; git pull)
 
-(cd changeomatic; git pull)
+(cd kassomat-changeomatic; git pull)
 
-(cd PayoutSimulator; git pull)
+(cd kassomat-payout-simulator; git pull)
 
 (cd kassomat-scripts; git pull)
